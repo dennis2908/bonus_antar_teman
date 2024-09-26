@@ -1,0 +1,78 @@
+version: '2'
+services:
+
+  app:
+    build: .
+    networks:
+      - rabbitmq_net
+    env_file:
+      - .env  
+    depends_on:
+      netorder:
+        condition: service_healthy    
+    ports:
+         - "8000:8000"
+    expose: 
+      - '8000'
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 8005:80
+    depends_on:
+      - netorder
+      - app
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - rabbitmq_net
+      
+  fepesanmakanan:
+    container_name: fepesanmakanan
+    image: fepesanmakanan/1.0
+    build: pemesanan-makanan-next/
+    ports:
+      - "3000:3000"
+
+  rabbitmqdock:
+    image: rabbitmq:3-management-alpine
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - rabbitmq_net    
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+  netorder:
+    image: mysql:5.6
+    environment:
+        MYSQL_DATABASE: order
+        MYSQL_USER: order
+        MYSQL_PASSWORD: order
+        MYSQL_ROOT_PASSWORD: order
+    expose: 
+      - '3306'  
+    networks:
+      - rabbitmq_net 
+    volumes:
+      - dborder:/var/lib/mysql  
+    healthcheck:
+            test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+            timeout: 20s
+            retries: 10  
+    ports:
+        - "3306:3306"   
+
+volumes:
+  dborder:
+
+networks:
+  rabbitmq_net:
+    driver: bridge
