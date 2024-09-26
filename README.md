@@ -15,6 +15,12 @@ php artisan optimize:clear
 Tunggu hingga akhir lalu :
 
 ```
+php artisan optimize
+```
+
+Tunggu hingga akhir lalu :
+
+```
 php artisan serve
 ```
 
