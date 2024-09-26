@@ -1,4 +1,4 @@
-Laravel, php, composer </br>
+Laravel 8.12, php, composer </br>
 
 di cmd ketik :
 
