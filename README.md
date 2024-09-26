@@ -1,4 +1,4 @@
-Laravel, PGSQL, php, composer </br>
+Laravel, php, composer </br>
 
 di cmd ketik :
 
