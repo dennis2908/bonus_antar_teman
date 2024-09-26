@@ -1,6 +1,6 @@
 Laravel, PGSQL, php, composer </br>
 
-copy isi .env ke .env lalu di cmd ketik :
+di cmd ketik :
 
 ```
 composer install
