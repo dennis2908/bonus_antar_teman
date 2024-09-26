@@ -3,6 +3,12 @@ Laravel 8.12, php, composer </br>
 di cmd ketik :
 
 ```
+git clone https://github.com/dennis2908/bonus_antar_teman
+```
+
+lalu pergi ke folder bonus_antar_teman. Kemudian di cmd bonus_antar_teman ketik :
+
+```
 composer install
 ```
 
