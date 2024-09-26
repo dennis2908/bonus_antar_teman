@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Menu;
-use App\Http\Requests\StoreMenuRequest;
-use App\Http\Requests\UpdateMenuRequest;
 use Illuminate\Support\Facades\DB;
 
 class BonusTemanController extends Controller
