@@ -24,7 +24,7 @@ Lalu buka di browser :
 http://localhost:8000/api/bonusteman
 ```
 
-Lalu buka di postman :
+atau buka di postman :
 
 ```
 GET localhost:8000/api/bonusteman
