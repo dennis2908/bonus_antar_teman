@@ -55,3 +55,5 @@ atau buka di postman :
 ```
 GET localhost:8000/api/bonusteman
 ```
+
+![image](https://github.com/user-attachments/assets/3f8f56f6-acf8-4b88-a757-80f7ec1fa1b7)
